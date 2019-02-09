@@ -31,12 +31,6 @@ save test.mat
 2. Run minConf_TMP in R
 funObj <- function(w,X,y){
   
-  # Xw = X%*%w
-  # res = Xw-y
-  # f = sum(res^2)
-  # g = 2*(t(X)%*%res)
-  
-  
   n = dim(X)[1]
   p = dim(X)[2]
   XX = t(X) %*% X
