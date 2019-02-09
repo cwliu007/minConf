@@ -28,7 +28,9 @@ UB = inf(nVars,1);
 
 save test.mat
 
+
 2. Run minConf_TMP in R
+
 funObj <- function(w,X,y){
   
   n = dim(X)[1]
