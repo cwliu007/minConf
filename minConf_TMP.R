@@ -1,8 +1,10 @@
 minConf_TMP <- function(
   x, funObj, gr = NULL, he = NULL, LB = -Inf, UB = Inf, method = "lbfgs", ...
-  ,verbose=0,numDiff=1,optTol=1e-6
+  ,verbose=0,numDiff=0,optTol=1e-6
   ,maxIter=500,suffDec=1e-4,interp=1,corrections=100,damped=0
   ){
+  
+  if (is.null(gr)) numDiff = 1
 
   nVars = length(as.vector(x))
 
