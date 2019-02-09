@@ -33,6 +33,7 @@ minConf_TMP <- function(
   }else{
     g = autoGrad(x,useComplex,numDiff,funObj,...) 
   }
+  g = as.vector(g)
 
   if (method=="newton"){
     H = he(x ,...)
@@ -160,7 +161,7 @@ minConf_TMP <- function(
 
     # Check that Progress can be made along the direction
     f_old = f
-    gtd = t(g)%*%d
+    gtd = g%*%d
     if (gtd > -optTol){
       message = "Directional Derivative below optTol"
       if (verbose==3) print(message)
@@ -186,6 +187,7 @@ minConf_TMP <- function(
         g_new = autoGrad(x_new,useComplex,numDiff,funObj,...) 
         H = autoHessian(x_new,useComplex,numDiff,funObj,...) 
       }
+      g_new = as.vector(g_new)
       
     }else{
       f_new = funObj(x_new ,...)
@@ -194,6 +196,7 @@ minConf_TMP <- function(
       }else{
         g_new = autoGrad(x_new,useComplex,numDiff,funObj,...) 
       }
+      g_new = as.vector(g_new)
     }
     funEvals = funEvals+1
 
@@ -237,6 +240,7 @@ minConf_TMP <- function(
       }else{
         g_new = autoGrad(x_new,useComplex,numDiff,funObj,...) 
       }
+      g_new = as.vector(g_new)
       funEvals = funEvals+1
       lineSearchIters = lineSearchIters+1
     }
@@ -301,7 +305,7 @@ minConf_TMP <- function(
         g_new = autoGrad(x,useComplex,numDiff,funObj,...) 
         H = autoHessian(x,useComplex,numDiff,funObj,...)
       }
-      
+      g_new = as.vector(g_new)
     }
 
     i = i + 1
