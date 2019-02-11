@@ -313,6 +313,7 @@ minConf_TMP <- function(
     i = i + 1
   }
 
+  return(  list(par=x,objective=f,funEvals=funEvals,g=g,H=H,message="Function Evaluations exceeds maxIter")  )
 }
 
 
