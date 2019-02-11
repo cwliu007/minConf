@@ -38,7 +38,11 @@ minConf_TMP <- function(
   g = as.vector(g)
 
   if (method=="newton"){
-    H = he(x ,...)
+    if (numDiff==0){
+      H = he(x ,...)
+    }else{
+      H = autoHessian(x,useComplex,numDiff,funObj,...) 
+    }
     secondOrder = TRUE
   }else{
     H = NULL

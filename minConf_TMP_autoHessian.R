@@ -1,4 +1,4 @@
-autoHessian <- function(x,type,numDiff,funObj,h2 = .Machine$double.eps^(1/4),...){
+autoHessian <- function(x,type,numDiff,funObj,...){
   # Numerically compute Hessian of objective function from function values
   # 
   # type =
@@ -7,7 +7,7 @@ autoHessian <- function(x,type,numDiff,funObj,h2 = .Machine$double.eps^(1/4),...
 
   p = length(x)
   
-  # eps = .Machine$double.eps
+  eps = .Machine$double.eps
   
   H = matrix(0,p,p)
   
@@ -15,7 +15,9 @@ autoHessian <- function(x,type,numDiff,funObj,h2 = .Machine$double.eps^(1/4),...
 
   }else if(numDiff == 3){
     logp = funObj(x,...)
-    # h2 = eps^(1/4)
+    ma = cbind(abs(x),rep(1,p))
+    h2 = eps^(1/4)*sign(x)*apply(ma,1,max)
+    h2[h2==0] = eps^(1/4)
     e_i = rep(0,p)
     e_j = rep(0,p)
     for (i in 1:p){
@@ -44,7 +46,9 @@ autoHessian <- function(x,type,numDiff,funObj,h2 = .Machine$double.eps^(1/4),...
   }else{ # Use Finite Differencing
     
     logp = funObj(x,...)
-    # h2 = eps^(1/4)
+    ma = cbind(abs(x),rep(1,p))
+    h2 = eps^(1/4)*sign(x)*apply(ma,1,max)
+    h2[h2==0] = eps^(1/4)
     e_i = rep(0,p)
     e_j = rep(0,p)
     for (i in 1:p){
