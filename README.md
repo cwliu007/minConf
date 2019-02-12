@@ -18,7 +18,7 @@ fw <- function(x) (1-x[1])^2 + 100*(x[2]-x[1]^2)^2 # Rosenbrock function where c
 
 x = c(0,0)
 
-m1 <- optim(x, fw, method = "L-BFGS-B")
+m1 <- optim(x, fw, method = "L-BFGS-B") # for comparison purpose
 
 m1$par
 
