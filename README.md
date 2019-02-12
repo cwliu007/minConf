@@ -28,7 +28,7 @@ m2 <- minConf_TMP(x, fw, method="lbfgs")
 
 m2$par
 
-#0.9997194, 0.9994284
+#0.9999954, 0.9999901
 
 m3 <- minConf_TMP(x, fw, method="newton")
 
