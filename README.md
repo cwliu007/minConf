@@ -5,4 +5,5 @@ R code of the minConf_TMP (from minConf package in MATLAB language) used for min
 INSTALLATION in R:
 
 library(devtools)
+
 install_github("genwei007/minConf_TMP")
