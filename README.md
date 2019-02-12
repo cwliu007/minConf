@@ -1,6 +1,6 @@
-# minConf_TMP
+# minConf_TMP for minimization
 
-R code of the minConf_TMP (from minConf package in MATLAB language) used for minimization. (See https://www.cs.ubc.ca/~schmidtm/Software/minConf.html)
+R code of the minConf_TMP (from minConf package in MATLAB language). (See usage at https://www.cs.ubc.ca/~schmidtm/Software/minConf.html)
 
 INSTALLATION in R:
 
