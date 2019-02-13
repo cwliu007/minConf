@@ -4,7 +4,7 @@ R code of the minConf_TMP (converted from minConf package in MATLAB). (See usage
 
 ---
 
-How To Install in R:
+# How To Install in R:
 
 library(devtools)
 
@@ -12,7 +12,7 @@ install_github("genwei007/minConf_TMP")
 
 ---
 
-Example:
+# Example:
 
 fw <- function(x) (1-x[1])^2 + 100*(x[2]-x[1]^2)^2 # Rosenbrock function where c(1,1) is minimum
 
