@@ -1,6 +1,6 @@
 # minConf_TMP for minimization
 
-R code of the minConf_TMP (converted from minConf package in MATLAB). 
+R code of the minConf_TMP (converted from `minConf` package in MATLAB). 
 
 
 # How To Install in R:
