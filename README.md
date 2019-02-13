@@ -37,7 +37,7 @@ m3$par
 
 # More Examples
 
-See https://www.cs.ubc.ca/~schmidtm/Software/minConf.html
+See https://www.cs.ubc.ca/~schmidtm/Software/TMP/examples.html
 
 # Citations
 
