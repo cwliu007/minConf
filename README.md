@@ -1,7 +1,6 @@
 # minConf_TMP for minimization
 
-R code of the minConf_TMP (converted from minConf package in MATLAB). (See usage at https://www.cs.ubc.ca/~schmidtm/Software/minConf.html)
-
+R code of the minConf_TMP (converted from minConf package in MATLAB). 
 
 
 # How To Install in R:
@@ -35,3 +34,11 @@ m3 <- minConf_TMP(x, fw, method="newton")
 m3$par
 
 #0.9999458, 0.9998900
+
+# More Examples
+
+See https://www.cs.ubc.ca/~schmidtm/Software/minConf.html
+
+# Citations
+
+M. Schmidt. minConf: projection methods for optimization with simple constraints in Matlab. http://www.cs.ubc.ca/~schmidtm/Software/minConf.html, 2008. 
