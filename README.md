@@ -7,7 +7,7 @@ R code of the minConf_TMP (converted from `minConf` package in MATLAB).
 
 library(devtools)
 
-install_github("cwliu/minConf")
+install_github("genwei007/minConf")
 
 
 
