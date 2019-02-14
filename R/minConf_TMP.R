@@ -28,12 +28,15 @@ minConf_TMP <- function(
   # Evaluate Initial Point
   x = projectBounds(x,LB,UB)
   
-  f = funObj(x ,...)
+  
   
   if (numDiff==0){
+    f = funObj(x ,...)
     g = gr(x ,...)
   }else{
-    g = autoGrad(x,useComplex,numDiff,funObj,...) 
+    out = autoGrad(x,useComplex,numDiff,funObj,...)
+    f = out$f
+    g = out$g
   }
   g = as.vector(g)
   
@@ -185,22 +188,28 @@ minConf_TMP <- function(
     # Evaluate the Objective and Projected Gradient at the Initial Step
     x_new = projectBounds(x+t*d,LB,UB)
     if (secondOrder){
-      f_new = funObj(x_new ,...)
       if (numDiff==0){
+        f_new = funObj(x_new ,...)
         g_new = gr(x_new ,...)
         H = he(x_new ,...)
       }else{
-        g_new = autoGrad(x_new,useComplex,numDiff,funObj,...) 
+        out = autoGrad(x_new,useComplex,numDiff,funObj,...)
+        f_new = out$f
+        g_new = out$g
+        
         H = autoHessian(x_new,useComplex,numDiff,funObj,...) 
       }
       g_new = as.vector(g_new)
       
     }else{
-      f_new = funObj(x_new ,...)
+      
       if (numDiff==0){
+        f_new = funObj(x_new ,...)
         g_new = gr(x_new ,...)
       }else{
-        g_new = autoGrad(x_new,useComplex,numDiff,funObj,...) 
+        out = autoGrad(x_new,useComplex,numDiff,funObj,...)
+        f_new = out$f
+        g_new = out$g
       }
       g_new = as.vector(g_new)
     }
@@ -240,11 +249,14 @@ minConf_TMP <- function(
       
       # Evaluate New Point
       x_new = projectBounds(x+t*d,LB,UB)
-      f_new = funObj(x_new ,...)
+      
       if (numDiff==0){
+        f_new = funObj(x_new ,...)
         g_new = gr(x_new ,...)
       }else{
-        g_new = autoGrad(x_new,useComplex,numDiff,funObj,...) 
+        out = autoGrad(x_new,useComplex,numDiff,funObj,...) 
+        f_new = out$f
+        g_new = out$g
       }
       g_new = as.vector(g_new)
       funEvals = funEvals+1
@@ -303,12 +315,16 @@ minConf_TMP <- function(
     
     # If necessary, compute Hessian
     if (secondOrder && (lineSearchIters > 1) ){
-      f_new = funObj(x ,...)
+      
       if (numDiff==0){
+        f_new = funObj(x ,...)
         g_new = gr(x ,...)
         H = he(x ,...)
       }else{
-        g_new = autoGrad(x,useComplex,numDiff,funObj,...) 
+        out = autoGrad(x,useComplex,numDiff,funObj,...) 
+        f_new = out$f
+        g_new = out$g
+        
         H = autoHessian(x,useComplex,numDiff,funObj,...)
       }
       g_new = as.vector(g_new)

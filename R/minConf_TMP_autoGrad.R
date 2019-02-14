@@ -19,7 +19,7 @@ autoGrad <- function(x,type,numDiff,funObj,...){
       diff[j] = funObj(x + mu*1i*e_j,...)
       e_j[j] = 0
     }
-    # ff = mean(Re(diff))
+    ff = mean(Re(diff))
     g = Im(diff)/mu
   }else if(numDiff == 3){
     mu = 2*sqrt(1e-12)*(1+norm(x,"2"))/norm(p,"2")
@@ -32,7 +32,7 @@ autoGrad <- function(x,type,numDiff,funObj,...){
       diff2[j] = funObj(x - mu*e_j,...)
       e_j[j] = 0
     }
-    # ff = mean(c(diff1,diff2))
+    ff = mean(c(diff1,diff2))
     g = (diff1 - diff2)/(2*mu)
   }else{ # Use Finite Differencing
     ff = as.double(funObj(x,...))
@@ -46,5 +46,5 @@ autoGrad <- function(x,type,numDiff,funObj,...){
     }
     g = (diff-ff)/mu
   }
-  return(g)
+  return(list(f=ff,g=g))
 }
