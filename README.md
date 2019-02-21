@@ -1,4 +1,4 @@
-# minConf_TMP for minimization
+# minConf_TMP for minimization in R
 
 R code of the minConf_TMP (converted from `minConf` package in MATLAB). 
 
