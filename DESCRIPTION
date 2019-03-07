@@ -5,7 +5,7 @@ Version: 1.0
 Date: 2019-02-12
 Author: Liu, Chen-Wei
 Maintainer: Liu, Chen-Wei
-Description: More about what it does (maybe more than one line)
+Description: This is R version of minConf (written in MATLAB by Mark Schmidt)
 License: What license is it under?
 Imports: Rcpp (>= 0.12.18)
 LinkingTo: Rcpp, RcppArmadillo
