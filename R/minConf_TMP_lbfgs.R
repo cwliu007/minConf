@@ -16,9 +16,12 @@ lbfgs <- function(g,s,y,Hdiag){
   k = dim(s)[2]
   
   ro = rep(0.0,k)
-  for (i in 1:k){
-    ro[i] = 1 / (t(as.matrix(y[,i]))%*%as.matrix(s[,i]))
+  if (k>=1){
+    for (i in 1:k){
+      ro[i] = 1 / (t(as.matrix(y[,i]))%*%as.matrix(s[,i]))
+    }
   }
+
   
   q = matrix(0,p,k+1)
   r = matrix(0,p,k+1)
@@ -27,17 +30,23 @@ lbfgs <- function(g,s,y,Hdiag){
   
   q[,k+1] = g
   
-  for (i in k:1){
-    al[i] = ro[i]*t(as.matrix(s[,i]))%*%as.matrix(q[,i+1])
-    q[,i] = q[,i+1] - al[i] * y[,i]
+  if (k>=1){
+    for (i in k:1){
+      al[i] = ro[i]*t(as.matrix(s[,i]))%*%as.matrix(q[,i+1])
+      q[,i] = q[,i+1] - al[i] * y[,i]
+    }
   }
+
   
   # Multiply by Initial Hessian
   r[,1] = Hdiag*q[,1]
   
-  for (i in 1:k){
-    be[i] = ro[i]*t(as.matrix(y[,i]))%*%as.matrix(r[,i])
-    r[,i+1] = r[,i] + s[,i]*(al[i]-be[i])
+  if (k>=1){
+    for (i in 1:k){
+      be[i] = ro[i]*t(as.matrix(y[,i]))%*%as.matrix(r[,i])
+      r[,i+1] = r[,i] + s[,i]*(al[i]-be[i])
+    }
   }
+
   d = r[,k+1]
 }
